@@ -70,7 +70,7 @@
 
     /* ── HERO ── */
     #hero { height:100vh; min-height:700px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; padding:0 24px; }
-    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; filter:contrast(1.1) saturate(1.18) brightness(1.02); animation:hero-kb 16s ease-out forwards; }
+    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%; filter:contrast(1.1) saturate(1.18) brightness(1.02); animation:hero-kb 16s ease-out forwards; }
     @keyframes hero-kb { from { transform:scale(1.12); } to { transform:scale(1); } }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(170deg,rgba(26,6,20,.68) 0%,rgba(26,6,20,.42) 50%,rgba(26,6,20,.78) 100%); }
     .hero-eyebrow { font-family:var(--fb); font-size:.68rem; letter-spacing:.38em; text-transform:uppercase; color:var(--pink); margin-bottom:28px; opacity:0; position:relative; z-index:1; }
@@ -293,6 +293,90 @@
       .order-toggle { width:100%; }
       .order-opt { flex:1; text-align:center; }
     }
+
+    /* ══ 3D CONTAINER SCROLL SHOWCASE ══ */
+    #showcase { background:#0c020f; padding:130px 40px 90px; overflow:hidden; }
+    .sc-outer { max-width:1100px; margin:0 auto; }
+    .sc-head { text-align:center; }
+    .sc-head .eyebrow { display:inline-block; margin-bottom:20px; }
+    .sc-head-title { font-family:var(--fd); font-size:clamp(2.4rem,5vw,4.2rem); font-weight:300; color:var(--white); line-height:1.1; }
+    .sc-head-title em { font-style:italic; color:var(--pink); }
+    .sc-head-sub { font-family:var(--fb); font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.26); margin-top:16px; }
+    .sc-persp { perspective:1200px; margin-top:68px; }
+    .sc-card { border-radius:24px; border:3px solid rgba(255,255,255,.1); background:#1a1a1a; padding:10px; will-change:transform; transform-origin:50% 0%; box-shadow:0 0 #0000004d,0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a; }
+    .sc-card-in { border-radius:17px; overflow:hidden; background:#0f0010; }
+    .sc-chrome { display:flex; align-items:center; gap:14px; padding:14px 20px; background:#1e1e1e; border-bottom:1px solid rgba(255,255,255,.07); }
+    .sc-chrome-dots { display:flex; gap:6px; flex-shrink:0; }
+    .sc-chrome-dots span { display:block; width:11px; height:11px; border-radius:50%; }
+    .sc-chrome-dots .d-r { background:#ff5f57; }
+    .sc-chrome-dots .d-y { background:#ffbd2e; }
+    .sc-chrome-dots .d-g { background:#28c840; }
+    .sc-chrome-bar { flex:1; background:#2a2a2a; border-radius:4px; padding:6px 16px; font-family:var(--fb); font-size:.68rem; color:rgba(255,255,255,.26); letter-spacing:.04em; }
+    .sc-hero-row { display:flex; align-items:center; justify-content:space-between; padding:22px 28px 18px; border-bottom:1px solid rgba(244,114,182,.08); }
+    .sc-brand { font-family:var(--fd); font-size:1.35rem; font-weight:400; color:var(--white); letter-spacing:.04em; }
+    .sc-brand span { color:var(--pink); font-style:italic; }
+    .sc-subnav { display:flex; gap:22px; }
+    .sc-subnav a { font-family:var(--fb); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.3); text-decoration:none; transition:color .3s; }
+    .sc-subnav a.active { color:var(--pink); }
+    .sc-tiles { display:grid; grid-template-columns:repeat(3,1fr); }
+    .sc-tile { padding:24px 26px 20px; border-right:1px solid rgba(244,114,182,.07); border-bottom:1px solid rgba(244,114,182,.07); display:flex; flex-direction:column; min-height:140px; }
+    .sc-tile:nth-child(3n) { border-right:none; }
+    .sc-tile-cat { font-family:var(--fb); font-size:.52rem; letter-spacing:.26em; text-transform:uppercase; color:var(--pink); margin-bottom:8px; opacity:.7; }
+    .sc-tile-name { font-family:var(--fd); font-size:1.2rem; font-weight:400; color:var(--white); line-height:1.2; margin-bottom:6px; }
+    .sc-tile-desc { font-size:.7rem; color:rgba(255,255,255,.28); line-height:1.6; flex:1; }
+    .sc-tile-price { font-family:var(--fd); font-size:1rem; font-weight:600; color:var(--pink); margin-top:14px; }
+    .sc-tile--feat { grid-column:span 2; background:rgba(244,114,182,.03); }
+    .sc-status { padding:16px 28px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(244,114,182,.08); }
+    .sc-status-txt { font-family:var(--fb); font-size:.6rem; color:rgba(255,255,255,.18); letter-spacing:.1em; }
+    .sc-order-btn { font-family:var(--fb); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:#fff; background:var(--pink); padding:9px 22px; border-radius:2px; text-decoration:none; transition:background .3s; }
+    .sc-order-btn:hover { background:var(--pink-l); }
+    @media (max-width:768px) {
+      #showcase { padding:90px 24px 70px; }
+      .sc-tiles { grid-template-columns:1fr 1fr; }
+      .sc-tile--feat { grid-column:span 2; }
+      .sc-subnav { display:none; }
+    }
+    @media (max-width:480px) {
+      .sc-tiles { grid-template-columns:1fr; }
+      .sc-tile--feat { grid-column:span 1; }
+      .sc-chrome-bar { display:none; }
+    }
+
+    /* ══ EXPERIENCE AMBIENT GLOW ══ */
+    #experience { position:relative; }
+    .exp-glow-orb { position:absolute; top:-5%; left:50%; transform:translateX(-50%); width:min(1100px,140%); height:65%; background:radial-gradient(ellipse at 50% 30%, rgba(244,114,182,.11) 0%, rgba(244,114,182,.04) 45%, transparent 72%); pointer-events:none; z-index:0; animation:exp-pulse 6s ease-in-out infinite; }
+    @keyframes exp-pulse {
+      0%,100% { opacity:.55; transform:translateX(-50%) scaleX(1)   scaleY(1); }
+      50%      { opacity:1;   transform:translateX(-50%) scaleX(1.12) scaleY(1.08); }
+    }
+    .experience-inner { position:relative; z-index:1; }
+    .experience-title { text-shadow:0 0 80px rgba(244,114,182,.22), 0 0 160px rgba(244,114,182,.08); }
+    #featureGrid { border-radius:4px; box-shadow:0 0 60px 12px rgba(244,114,182,.06), 0 0 120px 30px rgba(244,114,182,.03); }
+
+    /* ══ CTA GLOW PULSE ══ */
+    @keyframes cta-glow {
+      0%,100% { box-shadow:0 0 14px 3px rgba(244,114,182,.38), 0 0 38px 8px rgba(244,114,182,.13); }
+      50%      { box-shadow:0 0 26px 7px rgba(244,114,182,.60), 0 0 64px 14px rgba(244,114,182,.22); }
+    }
+    @keyframes cta-glow-dark {
+      0%,100% { box-shadow:0 0 14px 4px rgba(26,6,20,.35),  0 0 36px 8px rgba(26,6,20,.15); }
+      50%      { box-shadow:0 0 28px 8px rgba(26,6,20,.55),  0 0 70px 16px rgba(26,6,20,.25); }
+    }
+    .btn-pink      { animation:cta-glow 3.2s ease-in-out infinite; }
+    .nav-cta       { animation:cta-glow 3.2s ease-in-out infinite .4s; }
+    .postcode-submit { animation:cta-glow 3.2s ease-in-out infinite .8s; }
+    .sc-order-btn  { animation:cta-glow 3.2s ease-in-out infinite .6s; }
+    .btn-dark      { animation:cta-glow-dark 3.2s ease-in-out infinite; }
+    /* intensify on hover — override animation */
+    .btn-pink:hover, .nav-cta:hover, .postcode-submit:hover, .sc-order-btn:hover {
+      animation:none;
+      box-shadow:0 0 36px 10px rgba(244,114,182,.72), 0 0 80px 22px rgba(244,114,182,.28);
+    }
+    .btn-dark:hover { animation:none; box-shadow:0 0 36px 10px rgba(26,6,20,.7), 0 0 80px 20px rgba(26,6,20,.32); }
+    @media (prefers-reduced-motion:reduce) {
+      .btn-pink,.nav-cta,.postcode-submit,.sc-order-btn,.btn-dark { animation:none; }
+      .exp-glow-orb { animation:none; }
+    }
   </style>
 </head>
 <body>
@@ -461,6 +545,84 @@
       <div class="story-quote">
         <blockquote>"Food is the universal language — and ours speaks Filipino warmth and Edinburgh soul."</blockquote>
         <cite>— Cafe Presko</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SHOWCASE (3D Container Scroll) ═══ -->
+<section id="showcase">
+  <div class="sc-outer">
+    <div class="sc-head" id="scHead">
+      <span class="eyebrow">Order Online</span>
+      <h2 class="sc-head-title">
+        Everything you love,<br><em>delivered to your door.</em>
+      </h2>
+      <p class="sc-head-sub">Delivery &nbsp;·&nbsp; Collection &nbsp;·&nbsp; Dine In &nbsp;·&nbsp; 342 Gorgie Road</p>
+    </div>
+    <div class="sc-persp" id="scPersp">
+      <div class="sc-card" id="scCard">
+        <div class="sc-card-in">
+          <!-- Browser chrome -->
+          <div class="sc-chrome">
+            <div class="sc-chrome-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+            <div class="sc-chrome-bar">cafe-presko.co.uk &nbsp;—&nbsp; Order Online</div>
+          </div>
+          <!-- Branding row -->
+          <div class="sc-hero-row">
+            <div class="sc-brand">Cafe <span>Presko</span></div>
+            <nav class="sc-subnav" aria-label="Menu categories">
+              <a href="#menu" class="active">Burgers</a>
+              <a href="#menu">Desserts</a>
+              <a href="#menu">Drinks</a>
+              <a href="#menu">Deals</a>
+            </nav>
+          </div>
+          <!-- Menu tile grid -->
+          <div class="sc-tiles">
+            <div class="sc-tile sc-tile--feat">
+              <div class="sc-tile-cat">★ Signature</div>
+              <div class="sc-tile-name">Brave-Heart Burger</div>
+              <div class="sc-tile-desc">6oz Beef with Haggis, Fried Onions &amp; Peppercorn Sauce — Scotland on a bun. Our most loved dish since day one.</div>
+              <div class="sc-tile-price">from £9.99</div>
+            </div>
+            <div class="sc-tile">
+              <div class="sc-tile-cat">Desserts</div>
+              <div class="sc-tile-name">Belgian Waffles</div>
+              <div class="sc-tile-desc">16 flavours — Nutella to Salted Caramel</div>
+              <div class="sc-tile-price">from £6.99</div>
+            </div>
+            <div class="sc-tile">
+              <div class="sc-tile-cat">Burgers</div>
+              <div class="sc-tile-name">Presko Rodeo</div>
+              <div class="sc-tile-desc">Cheddar, Cider Onions &amp; Wild BBQ Sauce</div>
+              <div class="sc-tile-price">from £13.99</div>
+            </div>
+            <div class="sc-tile">
+              <div class="sc-tile-cat">Drinks</div>
+              <div class="sc-tile-name">Milkshakes</div>
+              <div class="sc-tile-desc">Kinder, Ferrero, Oreo &amp; 9 more flavours</div>
+              <div class="sc-tile-price">from £4.99</div>
+            </div>
+            <div class="sc-tile">
+              <div class="sc-tile-cat">Sides</div>
+              <div class="sc-tile-name">House Special Chips</div>
+              <div class="sc-tile-desc">Pulled Pork &amp; Macaroni Cheese</div>
+              <div class="sc-tile-price">from £7.99</div>
+            </div>
+            <div class="sc-tile">
+              <div class="sc-tile-cat">Best Value</div>
+              <div class="sc-tile-name">Meal Deal for 2</div>
+              <div class="sc-tile-desc">2 Burgers · 2 Chips · 2 Drinks · Slaw</div>
+              <div class="sc-tile-price">from £28.99</div>
+            </div>
+          </div>
+          <!-- Footer row -->
+          <div class="sc-status">
+            <span class="sc-status-txt">342 Gorgie Road &nbsp;·&nbsp; Edinburgh EH11 2QU &nbsp;·&nbsp; 0131 261 4948</span>
+            <a href="https://www.cafe-presko.co.uk" target="_blank" rel="noopener" class="sc-order-btn">Order Now →</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -695,6 +857,7 @@
 
 <!-- ═══ EXPERIENCE ═══ -->
 <section id="experience" aria-labelledby="exp-heading">
+  <div class="exp-glow-orb" aria-hidden="true"></div>
   <div class="experience-inner">
     <div class="experience-header reveal">
       <span class="eyebrow">The Experience</span>
@@ -982,6 +1145,94 @@
     btn.addEventListener('mouseleave', () => {
       gsap.to(btn, { x:0, y:0, duration:.55, ease:'elastic.out(1,.5)' });
     });
+  });
+
+  /* ── 3D CONTAINER SCROLL (ContainerScroll equiv) ── */
+  const scCard = document.getElementById('scCard');
+  const scHead = document.getElementById('scHead');
+  if (scCard) {
+    gsap.fromTo(scCard,
+      { rotateX: 22, scale: 1.06, y: 20 },
+      { rotateX: 0, scale: 1, y: 0, ease:'none',
+        scrollTrigger: { trigger:'#showcase', start:'top 78%', end:'center 28%', scrub:1.4 }
+      }
+    );
+    gsap.fromTo(scHead,
+      { opacity:0, y:56 },
+      { opacity:1, y:0, duration:1.1, ease:'power3.out',
+        scrollTrigger: { trigger:'#showcase', start:'top 82%', toggleActions:'play none none none' }
+      }
+    );
+    gsap.to(scHead, { y:-80, ease:'none',
+      scrollTrigger: { trigger:'#showcase', start:'40% top', end:'bottom top', scrub:1 }
+    });
+    /* stagger tile entrance when card flattens */
+    gsap.fromTo('.sc-tile',
+      { opacity:0, y:16 },
+      { opacity:1, y:0, duration:.55, stagger:.07, ease:'power2.out',
+        scrollTrigger: { trigger:'#showcase', start:'30% 60%', toggleActions:'play none none none' }
+      }
+    );
+  }
+
+  /* ── SECTION EYEBROW SLIDE-IN ── */
+  gsap.utils.toArray('.eyebrow, .offer-eyebrow').forEach(el => {
+    gsap.fromTo(el, { opacity:0, x:-18 }, { opacity:1, x:0, duration:.65, ease:'power2.out',
+      scrollTrigger: { trigger:el, start:'top 92%', toggleActions:'play none none none' }
+    });
+  });
+
+  /* ── DEAL CARD SLIDE IN ── */
+  gsap.fromTo('.deal-card', { opacity:0, x:-44 }, { opacity:1, x:0, duration:.85, ease:'power3.out',
+    scrollTrigger: { trigger:'.deal-card', start:'top 88%', toggleActions:'play none none none' }
+  });
+
+  /* ── HOURS STAGGER ── */
+  gsap.fromTo('.hours-row', { opacity:0, x:22 }, { opacity:1, x:0, duration:.5, stagger:.07, ease:'power2.out',
+    scrollTrigger: { trigger:'.hours-list', start:'top 85%', toggleActions:'play none none none' }
+  });
+
+  /* ── STORY QUOTE PARALLAX ── */
+  gsap.to('.story-quote', { y:'-30px', ease:'none',
+    scrollTrigger: { trigger:'#story', start:'top bottom', end:'bottom top', scrub:1.2 }
+  });
+
+  /* ── MENU TITLE CLIP REVEAL ── */
+  gsap.fromTo('.menu-title', { opacity:0, y:32, letterSpacing:'-.08em' },
+    { opacity:1, y:0, letterSpacing:'-.025em', duration:.95, ease:'expo.out',
+      scrollTrigger: { trigger:'.menu-title', start:'top 88%', toggleActions:'play none none none' }
+    }
+  );
+
+  /* ── EXPERIENCE TITLE SPLIT ── */
+  gsap.fromTo('.experience-title', { opacity:0, y:40 },
+    { opacity:1, y:0, duration:1.1, ease:'power3.out',
+      scrollTrigger: { trigger:'.experience-title', start:'top 88%', toggleActions:'play none none none' }
+    }
+  );
+
+  /* ── OFFER SECTION — watermark count-up ── */
+  let offerRun = false;
+  ScrollTrigger.create({
+    trigger:'#offer', start:'top 75%',
+    onEnter: () => {
+      if (offerRun) return; offerRun = true;
+      const wm = document.querySelector('.offer-wm');
+      if (!wm) return;
+      const obj = { v:0 };
+      gsap.to(obj, { v:35, duration:2.2, ease:'power2.out', onUpdate:()=>{ wm.textContent = Math.floor(obj.v)+'%'; }});
+      gsap.fromTo('.offer-title', { opacity:0, y:38 }, { opacity:1, y:0, duration:1, ease:'power2.out' });
+    }
+  });
+
+  /* ── FIND US MAP REVEAL ── */
+  gsap.fromTo('.map-wrap', { opacity:0, scale:.97 }, { opacity:1, scale:1, duration:1.1, ease:'power2.out',
+    scrollTrigger: { trigger:'.map-wrap', start:'top 85%', toggleActions:'play none none none' }
+  });
+
+  /* ── SOCIAL LINKS STAGGER ── */
+  gsap.fromTo('.social-link', { opacity:0, y:14 }, { opacity:1, y:0, duration:.55, stagger:.1, ease:'power2.out',
+    scrollTrigger: { trigger:'.social-row', start:'top 88%', toggleActions:'play none none none' }
   });
 </script>
 </body>
