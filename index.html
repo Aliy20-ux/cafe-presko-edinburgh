@@ -48,8 +48,8 @@
     .scroll-progress { position:fixed; top:0; left:0; height:2px; background:var(--pink); z-index:99999; width:0%; transition:width 0.08s linear; }
 
     /* ── CURSOR ── */
-    .cursor { position:fixed; width:40px; height:88px; pointer-events:none; z-index:99999; transform:translate(-50%, 0); transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1); filter:drop-shadow(0 5px 14px rgba(120,0,28,0.45)); }
-    .cursor.hovering { transform:translate(-50%, -6px) rotate(-11deg) scale(1.18); filter:drop-shadow(0 8px 20px rgba(200,0,40,0.65)); }
+    .cursor { position:fixed; width:30px; height:46px; pointer-events:none; z-index:99999; transform:translate(-48%, 0); transition:transform 0.26s cubic-bezier(0.34,1.56,0.64,1); filter:drop-shadow(0 4px 10px rgba(110,0,24,0.38)); will-change:transform; }
+    .cursor.hovering { transform:translate(-48%, -4px) rotate(-10deg) scale(1.22); filter:drop-shadow(0 6px 16px rgba(200,0,40,0.58)); }
 
     /* ── NAV ── */
     nav {
@@ -85,7 +85,7 @@
 
     /* ── HERO ── */
     #hero { height:100vh; min-height:700px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; padding:0 24px; }
-    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 65%; filter:contrast(1.08) saturate(1.12) brightness(1.04); }
+    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 82%; filter:contrast(1.08) saturate(1.12) brightness(1.04); }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(170deg, rgba(26,6,20,0.72) 0%, rgba(26,6,20,0.48) 50%, rgba(26,6,20,0.82) 100%); }
     .hero-eyebrow { font-family:var(--font-b); font-size:0.68rem; letter-spacing:0.38em; text-transform:uppercase; color:var(--pink); margin-bottom:28px; opacity:0; position:relative; z-index:1; }
     .hero-title { font-family:var(--font-d); font-size:clamp(5rem,13vw,12rem); font-weight:300; line-height:0.88; letter-spacing:-0.025em; color:var(--white); margin-bottom:28px; position:relative; z-index:1; }
@@ -169,27 +169,27 @@
     .menu-panel.active { display:block; }
 
     /* Category sub-header */
-    .menu-cat { font-family:var(--font-b); font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--pink); padding:28px 0 14px; border-bottom:1px solid rgba(26,6,20,0.07); margin-top:4px; }
-    .menu-cat:first-child { padding-top:0; }
+    .menu-cat { font-family:var(--font-b); font-size:0.58rem; letter-spacing:0.34em; text-transform:uppercase; color:var(--pink); padding:40px 0 14px; border-bottom:1px solid rgba(26,6,20,0.07); }
+    .menu-cat:first-child { padding-top:6px; }
 
     /* Full row (premium items) */
-    .menu-row { display:flex; align-items:baseline; gap:10px; padding:20px 0; border-bottom:1px solid rgba(26,6,20,0.06); }
+    .menu-row { display:flex; align-items:flex-start; gap:16px; padding:24px 0; border-bottom:1px solid rgba(26,6,20,0.055); }
     .menu-row-info { flex:1 1 auto; min-width:0; }
-    .menu-row-name { font-family:var(--font-d); font-size:1.3rem; font-weight:500; color:var(--dark); margin-bottom:4px; line-height:1.2; }
-    .menu-row-badge { display:inline-block; font-family:var(--font-b); font-size:0.56rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--pink); color:#fff; padding:2px 7px; border-radius:1px; margin-left:8px; vertical-align:middle; font-weight:500; }
-    .menu-row-desc { font-family:var(--font-b); font-size:0.79rem; color:rgba(26,6,20,0.48); font-weight:300; line-height:1.6; }
-    .menu-dots { flex:1 0 32px; max-width:100px; border-bottom:1px dotted rgba(26,6,20,0.18); margin-bottom:6px; min-width:24px; }
-    .menu-price { font-family:var(--font-d); font-size:1.18rem; font-weight:500; color:var(--dark); white-space:nowrap; flex-shrink:0; }
+    .menu-row-name { font-family:var(--font-d); font-size:1.28rem; font-weight:500; color:var(--dark); margin-bottom:5px; line-height:1.18; }
+    .menu-row-badge { display:inline-block; font-family:var(--font-b); font-size:0.54rem; letter-spacing:0.12em; text-transform:uppercase; background:var(--pink); color:#fff; padding:2px 8px; border-radius:1px; margin-left:9px; vertical-align:middle; font-weight:500; }
+    .menu-row-desc { font-family:var(--font-b); font-size:0.8rem; color:rgba(26,6,20,0.42); font-weight:300; line-height:1.7; }
+    .menu-dots { display:none; }
+    .menu-price { font-family:var(--font-d); font-size:1.15rem; font-weight:500; color:var(--dark); white-space:nowrap; flex-shrink:0; padding-top:4px; }
 
     /* Compact grid (drinks, sauces, cakes) */
     .menu-compact { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:12px 0 8px; }
-    .menu-compact-item { display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:rgba(26,6,20,0.04); border:1px solid rgba(26,6,20,0.05); border-radius:2px; gap:8px; }
-    .menu-compact-name { font-family:var(--font-d); font-size:1rem; font-weight:400; color:var(--dark); }
-    .menu-compact-price { font-family:var(--font-d); font-size:0.95rem; font-weight:500; color:var(--pink); white-space:nowrap; flex-shrink:0; }
+    .menu-compact-item { display:flex; justify-content:space-between; align-items:center; padding:16px 18px; background:rgba(26,6,20,0.028); border:1px solid rgba(26,6,20,0.058); border-radius:2px; gap:10px; min-height:56px; }
+    .menu-compact-name { font-family:var(--font-d); font-size:1.05rem; font-weight:400; color:var(--dark); line-height:1.3; }
+    .menu-compact-price { font-family:var(--font-d); font-size:1rem; font-weight:500; color:var(--pink); white-space:nowrap; flex-shrink:0; }
 
     /* Sauce grid (3 col, very compact) */
     .sauce-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:10px 0; }
-    .sauce-item { font-family:var(--font-b); font-size:0.74rem; color:rgba(26,6,20,0.6); padding:9px 12px; background:rgba(26,6,20,0.03); border:1px solid rgba(26,6,20,0.05); border-radius:2px; display:flex; justify-content:space-between; align-items:center; gap:6px; }
+    .sauce-item { font-family:var(--font-b); font-size:0.73rem; color:rgba(26,6,20,0.56); padding:12px 14px; background:rgba(26,6,20,0.028); border:1px solid rgba(26,6,20,0.055); border-radius:2px; display:flex; justify-content:space-between; align-items:center; gap:6px; min-height:44px; }
     .sauce-price { color:var(--pink); font-weight:500; flex-shrink:0; }
 
     /* ── EXPERIENCE ── */
@@ -307,89 +307,77 @@
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <div class="cursor" id="cursor" aria-hidden="true">
-  <svg viewBox="0 0 40 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 54 82" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <!-- Cherry main body gradient — vivid red, lit top-left -->
-      <radialGradient id="cg" cx="34%" cy="26%" r="74%" gradientUnits="objectBoundingBox">
-        <stop offset="0%"   stop-color="#FF4D70"/>
-        <stop offset="22%"  stop-color="#F01040"/>
-        <stop offset="58%"  stop-color="#C4002E"/>
-        <stop offset="100%" stop-color="#700018"/>
+      <radialGradient id="cg" cx="34%" cy="24%" r="74%" gradientUnits="objectBoundingBox">
+        <stop offset="0%"   stop-color="#FF5577"/>
+        <stop offset="20%"  stop-color="#F01040"/>
+        <stop offset="55%"  stop-color="#C4002E"/>
+        <stop offset="100%" stop-color="#680016"/>
       </radialGradient>
-      <!-- Bounce / reflected light at bottom -->
-      <radialGradient id="bl" cx="55%" cy="85%" r="55%" gradientUnits="objectBoundingBox">
-        <stop offset="0%"   stop-color="rgba(255,110,140,0.55)"/>
-        <stop offset="100%" stop-color="rgba(255,110,140,0)"/>
+      <radialGradient id="bl" cx="52%" cy="82%" r="52%" gradientUnits="objectBoundingBox">
+        <stop offset="0%"   stop-color="rgba(255,100,130,0.52)"/>
+        <stop offset="100%" stop-color="rgba(255,100,130,0)"/>
       </radialGradient>
-      <!-- Leaf gradient -->
-      <linearGradient id="leaf" x1="10%" y1="0%" x2="90%" y2="100%">
-        <stop offset="0%"   stop-color="#92D94E"/>
-        <stop offset="50%"  stop-color="#5DB032"/>
-        <stop offset="100%" stop-color="#2A6E10"/>
+      <linearGradient id="lf" x1="8%" y1="0%" x2="92%" y2="100%">
+        <stop offset="0%"   stop-color="#B0E860"/>
+        <stop offset="45%"  stop-color="#62C030"/>
+        <stop offset="100%" stop-color="#28700E"/>
       </linearGradient>
-      <!-- Stem round gradient (light on left edge) -->
       <linearGradient id="stm" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%"   stop-color="#276010"/>
-        <stop offset="40%"  stop-color="#5AAA28"/>
-        <stop offset="100%" stop-color="#276010"/>
+        <stop offset="0%"   stop-color="#246010"/>
+        <stop offset="42%"  stop-color="#58AA28"/>
+        <stop offset="100%" stop-color="#246010"/>
       </linearGradient>
-      <!-- Cherry drop shadow -->
-      <filter id="ds" x="-40%" y="-20%" width="180%" height="150%">
-        <feDropShadow dx="0" dy="5" stdDeviation="5.5" flood-color="#600015" flood-opacity="0.62"/>
+      <filter id="ds" x="-45%" y="-25%" width="190%" height="160%">
+        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#580012" flood-opacity="0.6"/>
       </filter>
-      <!-- Soft blur for large specular -->
-      <filter id="sf" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="2.2"/>
+      <filter id="sf" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="2"/>
       </filter>
     </defs>
 
-    <!-- ── STEM ── long elegant S-curve -->
-    <path d="M 20 3 C 25 16, 30 36, 21 58"
-          stroke="url(#stm)" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-    <!-- Stem left-edge highlight (roundness) -->
-    <path d="M 19.5 3 C 24 16, 28.5 36, 21 56"
-          stroke="rgba(160,240,80,0.32)" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-
-    <!-- ── LEAF ── branching right off the stem -->
-    <path d="M 25 28 C 34 16, 41 25, 32 37 C 28 33, 23 31, 25 28 Z" fill="url(#leaf)"/>
+    <!-- ── LEAF — at very top of stem, sweeping right like a real cherry ── -->
+    <path d="M 26 5 C 30 0, 50 1, 48 17 C 43 26, 24 18, 26 5 Z" fill="url(#lf)"/>
     <!-- Leaf main vein -->
-    <path d="M 25 28 C 28 29, 30 33, 32 37"
-          stroke="#1E5A0A" stroke-width="1.1" fill="none" opacity="0.65"/>
-    <!-- Leaf side veins -->
-    <path d="M 27.5 26.5 C 30 23, 35 22, 36 26" stroke="rgba(30,100,10,0.28)" stroke-width="0.75" fill="none"/>
-    <path d="M 29 31.5 C 31 29, 35 29, 36 32" stroke="rgba(30,100,10,0.28)" stroke-width="0.75" fill="none"/>
-    <!-- Leaf gloss sheen -->
-    <path d="M 26 27 C 31 18, 38 22, 35 28"
-          stroke="rgba(180,248,100,0.35)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <path d="M 26 5 C 32 9, 40 12, 48 17" stroke="#1C5C0A" stroke-width="1" fill="none" opacity="0.6"/>
+    <!-- Leaf side veins (parallel to main) -->
+    <path d="M 30 5  C 33 3,  39 3,  41 6"  stroke="rgba(28,98,10,0.26)" stroke-width="0.7" fill="none"/>
+    <path d="M 33 9  C 36 7,  41 8,  43 11" stroke="rgba(28,98,10,0.26)" stroke-width="0.7" fill="none"/>
+    <path d="M 36 14 C 39 12, 44 13, 46 16" stroke="rgba(28,98,10,0.26)" stroke-width="0.7" fill="none"/>
+    <!-- Leaf gloss sheen along top edge -->
+    <path d="M 28 4 C 33 0, 46 2, 46 10" stroke="rgba(190,255,110,0.28)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+    <!-- ── STEM — shorter, elegant S-curve ── -->
+    <path d="M 26 5 C 29 17, 27 33, 22 52"
+          stroke="url(#stm)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- Stem highlight ridge -->
+    <path d="M 25.5 5 C 28 17, 26.5 33, 22 51"
+          stroke="rgba(155,235,80,0.28)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
 
     <!-- ── CHERRY ── -->
-    <!-- Shadow layer -->
-    <circle cx="20" cy="71" r="15" fill="#5A0015" filter="url(#ds)"/>
-    <!-- Dark base rim (gives depth to edge) -->
-    <circle cx="20" cy="71" r="15" fill="#660018"/>
+    <!-- Deep shadow -->
+    <circle cx="22" cy="65" r="13" fill="#500012" filter="url(#ds)"/>
+    <!-- Dark edge rim -->
+    <circle cx="22" cy="65" r="13" fill="#620016"/>
     <!-- Main vivid gradient -->
-    <circle cx="20" cy="71" r="15" fill="url(#cg)"/>
-    <!-- Bounce light at base -->
-    <circle cx="20" cy="71" r="15" fill="url(#bl)"/>
-
-    <!-- Large soft specular — the glass-window reflection -->
-    <ellipse cx="13.5" cy="63.5" rx="9" ry="6.5"
-             fill="rgba(255,255,255,0.36)"
-             transform="rotate(-28 13.5 63.5)"
+    <circle cx="22" cy="65" r="13" fill="url(#cg)"/>
+    <!-- Warm bounce light at base -->
+    <circle cx="22" cy="65" r="13" fill="url(#bl)"/>
+    <!-- Large soft specular — window-glass reflection -->
+    <ellipse cx="16" cy="58.5" rx="8.5" ry="6"
+             fill="rgba(255,255,255,0.34)" transform="rotate(-26 16 58.5)"
              filter="url(#sf)"/>
     <!-- Primary specular highlight -->
-    <ellipse cx="13" cy="63" rx="5.5" ry="3.8"
-             fill="rgba(255,255,255,0.82)"
-             transform="rotate(-24 13 63)"/>
-    <!-- Tight bright specular point — the sparkle -->
-    <ellipse cx="12" cy="61.5" rx="2.8" ry="1.8"
-             fill="rgba(255,255,255,0.98)"
-             transform="rotate(-18 12 61.5)"/>
-    <!-- Micro glint -->
-    <circle cx="10.5" cy="60.5" r="1" fill="white"/>
-
-    <!-- Stem–cherry indent dent -->
-    <ellipse cx="20" cy="57" rx="3.2" ry="2.2" fill="rgba(0,0,0,0.28)"/>
+    <ellipse cx="15.5" cy="58" rx="5" ry="3.5"
+             fill="rgba(255,255,255,0.82)" transform="rotate(-22 15.5 58)"/>
+    <!-- Tight specular sparkle -->
+    <ellipse cx="14" cy="56.5" rx="2.6" ry="1.7"
+             fill="rgba(255,255,255,0.98)" transform="rotate(-16 14 56.5)"/>
+    <!-- Micro star glint -->
+    <circle cx="12.5" cy="55.5" r="0.9" fill="white"/>
+    <!-- Stem–cherry indent -->
+    <ellipse cx="22" cy="52.5" rx="3" ry="1.9" fill="rgba(0,0,0,0.26)"/>
   </svg>
 </div>
 
