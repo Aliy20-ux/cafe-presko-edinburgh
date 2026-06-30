@@ -38,8 +38,8 @@
     .scroll-progress { position:fixed; top:0; left:0; height:2px; background:var(--pink); z-index:99999; width:0%; transition:width 0.08s linear; }
 
     /* ── CURSOR ── */
-    .cursor { position:fixed; width:30px; height:46px; pointer-events:none; z-index:99999; transform:translate(-41%,-79%); transition:transform 0.26s cubic-bezier(0.34,1.56,0.64,1); filter:drop-shadow(0 4px 10px rgba(110,0,24,0.38)); will-change:transform; transform-origin:50% 79%; }
-    .cursor.hovering { transform:translate(-41%,-83%) rotate(-10deg) scale(1.22); filter:drop-shadow(0 6px 16px rgba(200,0,40,0.58)); }
+    .cursor { position:fixed; width:34px; height:44px; pointer-events:none; z-index:99999; transform:translate(-39%,-70%); transition:transform 0.26s cubic-bezier(0.34,1.56,0.64,1); filter:drop-shadow(0 4px 12px rgba(110,0,24,0.42)); will-change:transform; }
+    .cursor.hovering { transform:translate(-39%,-74%) rotate(-12deg) scale(1.2); filter:drop-shadow(0 6px 18px rgba(200,0,40,0.62)); }
 
     /* ── NAV ── */
     nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:18px 64px; display:flex; align-items:center; justify-content:space-between; transition:padding .4s,background .4s,border-color .4s,backdrop-filter .4s; border-bottom:1px solid transparent; }
@@ -505,7 +505,8 @@
 
 <!-- Cherry Cursor -->
 <div class="cursor" id="cursor" aria-hidden="true">
-  <svg viewBox="0 0 54 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- viewBox 54×70: short stem (~26u), big cherry r=18 (52% of height) -->
+  <svg viewBox="0 0 54 70" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="cg" cx="34%" cy="24%" r="74%" gradientUnits="objectBoundingBox">
         <stop offset="0%"   stop-color="#FF5577"/>
@@ -514,7 +515,7 @@
         <stop offset="100%" stop-color="#680016"/>
       </radialGradient>
       <radialGradient id="bl" cx="52%" cy="82%" r="52%" gradientUnits="objectBoundingBox">
-        <stop offset="0%"   stop-color="rgba(255,100,130,0.52)"/>
+        <stop offset="0%"   stop-color="rgba(255,100,130,0.54)"/>
         <stop offset="100%" stop-color="rgba(255,100,130,0)"/>
       </radialGradient>
       <linearGradient id="lf" x1="8%" y1="0%" x2="92%" y2="100%">
@@ -528,29 +529,46 @@
         <stop offset="100%" stop-color="#246010"/>
       </linearGradient>
       <filter id="ds" x="-45%" y="-25%" width="190%" height="160%">
-        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#580012" flood-opacity="0.6"/>
+        <feDropShadow dx="0" dy="3" stdDeviation="4.5" flood-color="#580012" flood-opacity="0.65"/>
       </filter>
       <filter id="sf" x="-40%" y="-40%" width="180%" height="180%">
-        <feGaussianBlur stdDeviation="2"/>
+        <feGaussianBlur stdDeviation="2.2"/>
       </filter>
     </defs>
-    <path d="M 26 5 C 30 0, 50 1, 48 17 C 43 26, 24 18, 26 5 Z" fill="url(#lf)"/>
-    <path d="M 26 5 C 32 9, 40 12, 48 17" stroke="#1C5C0A" stroke-width="1" fill="none" opacity="0.6"/>
-    <path d="M 30 5  C 33 3,  39 3,  41 6"  stroke="rgba(28,98,10,0.26)" stroke-width="0.7" fill="none"/>
-    <path d="M 33 9  C 36 7,  41 8,  43 11" stroke="rgba(28,98,10,0.26)" stroke-width="0.7" fill="none"/>
-    <path d="M 36 14 C 39 12, 44 13, 46 16" stroke="rgba(28,98,10,0.26)" stroke-width="0.7" fill="none"/>
-    <path d="M 28 4 C 33 0, 46 2, 46 10" stroke="rgba(190,255,110,0.28)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <path d="M 26 5 C 29 17, 27 33, 22 52" stroke="url(#stm)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    <path d="M 25.5 5 C 28 17, 26.5 33, 22 51" stroke="rgba(155,235,80,0.28)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-    <circle cx="22" cy="65" r="13" fill="#500012" filter="url(#ds)"/>
-    <circle cx="22" cy="65" r="13" fill="#620016"/>
-    <circle cx="22" cy="65" r="13" fill="url(#cg)"/>
-    <circle cx="22" cy="65" r="13" fill="url(#bl)"/>
-    <ellipse cx="16" cy="58.5" rx="8.5" ry="6" fill="rgba(255,255,255,0.34)" transform="rotate(-26 16 58.5)" filter="url(#sf)"/>
-    <ellipse cx="15.5" cy="58" rx="5" ry="3.5" fill="rgba(255,255,255,0.82)" transform="rotate(-22 15.5 58)"/>
-    <ellipse cx="14" cy="56.5" rx="2.6" ry="1.7" fill="rgba(255,255,255,0.98)" transform="rotate(-16 14 56.5)"/>
-    <circle cx="12.5" cy="55.5" r="0.9" fill="white"/>
-    <ellipse cx="22" cy="52.5" rx="3" ry="1.9" fill="rgba(0,0,0,0.26)"/>
+
+    <!-- Leaf at top of stem, sweeping right -->
+    <path d="M 26 4 C 30 -1, 50 0, 48 15 C 43 24, 24 17, 26 4 Z" fill="url(#lf)"/>
+    <!-- Leaf mid-vein -->
+    <path d="M 26 4 C 32 8, 40 11, 48 15" stroke="#1C5C0A" stroke-width="1" fill="none" opacity="0.6"/>
+    <!-- Leaf cross-veins -->
+    <path d="M 30 4  C 33 2, 39 2, 41 5"  stroke="rgba(28,98,10,.24)" stroke-width="0.7" fill="none"/>
+    <path d="M 33 9  C 37 7, 42 8, 44 11" stroke="rgba(28,98,10,.24)" stroke-width="0.7" fill="none"/>
+    <!-- Leaf sheen -->
+    <path d="M 28 3 C 34 0, 46 2, 46 10" stroke="rgba(190,255,110,.28)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+
+    <!-- Short stem: leaf tip → cherry top (only 26 units) -->
+    <path d="M 26 4 C 29 12, 25 22, 21 30" stroke="url(#stm)" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M 25.5 4 C 28 12, 25 22, 21 29.5" stroke="rgba(155,235,80,.28)" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+
+    <!-- Cherry — r=18 = 51% of viewBox height. Dominant element. -->
+    <!-- Shadow -->
+    <circle cx="21" cy="49" r="18" fill="#500012" filter="url(#ds)"/>
+    <!-- Deep base -->
+    <circle cx="21" cy="49" r="18" fill="#620016"/>
+    <!-- Main radial colour -->
+    <circle cx="21" cy="49" r="18" fill="url(#cg)"/>
+    <!-- Bottom rim light -->
+    <circle cx="21" cy="49" r="18" fill="url(#bl)"/>
+    <!-- Stem-attachment shadow dimple -->
+    <ellipse cx="21" cy="32" rx="3.5" ry="2.2" fill="rgba(0,0,0,.28)"/>
+    <!-- Specular: large soft glow -->
+    <ellipse cx="15" cy="42.5" rx="10" ry="7" fill="rgba(255,255,255,.32)" transform="rotate(-26 15 42.5)" filter="url(#sf)"/>
+    <!-- Specular: bright primary -->
+    <ellipse cx="14.5" cy="42" rx="6" ry="4.2" fill="rgba(255,255,255,.84)" transform="rotate(-22 14.5 42)"/>
+    <!-- Specular: tight hot-spot -->
+    <ellipse cx="13" cy="40.5" rx="3" ry="2" fill="rgba(255,255,255,.98)" transform="rotate(-16 13 40.5)"/>
+    <!-- Specular: micro glint -->
+    <circle cx="11.5" cy="39" r="1.1" fill="white"/>
   </svg>
 </div>
 
