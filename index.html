@@ -50,22 +50,41 @@
     .nav-links a:hover { opacity:1; color:var(--pink); }
     .nav-cta { background:var(--pink)!important; color:#fff!important; padding:10px 24px!important; border-radius:2px; opacity:1!important; font-weight:500!important; letter-spacing:.14em!important; transition:background .3s!important; }
     .nav-cta:hover { background:var(--pink-l)!important; }
-    .nav-toggle { display:none; flex-direction:column; gap:6px; background:none; border:none; padding:4px; z-index:1001; }
-    .nav-toggle span { display:block; width:26px; height:1.5px; background:var(--white); transition:all .35s; }
-    .nav-toggle.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
-    .nav-toggle.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+    .nav-toggle { display:none; flex-direction:column; gap:6px; align-items:center; justify-content:center; background:none; border:none; padding:4px; z-index:1001; position:relative; width:36px; height:36px; }
+    .nav-toggle span { display:block; width:26px; height:1.5px; background:var(--white); transition:opacity .22s ease, transform .22s ease; }
+    .nav-toggle.open span { opacity:0; transform:scaleX(0); }
+    .nav-toggle-cherry { position:absolute; top:50%; left:50%; width:28px; height:36px; opacity:0; transform:translate(-50%,-50%) scale(0.25) rotate(-20deg); transition:opacity .38s cubic-bezier(0.34,1.56,0.64,1), transform .38s cubic-bezier(0.34,1.56,0.64,1); pointer-events:none; filter:drop-shadow(0 3px 8px rgba(110,0,24,.5)); }
+    .nav-toggle.open .nav-toggle-cherry { opacity:1; transform:translate(-50%,-50%) scale(1) rotate(0deg); }
 
-    /* ── MOBILE MENU ── */
-    .mobile-menu { position:fixed; inset:0; background:var(--dark); z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:32px; opacity:0; pointer-events:none; transition:opacity .35s; }
+    /* ── MOBILE MENU (premium) ── */
+    .mobile-menu { position:fixed; inset:0; background:var(--dark); z-index:999; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding:88px 48px 56px; opacity:0; pointer-events:none; transition:opacity .42s cubic-bezier(0.4,0,0.2,1); overflow:hidden; }
+    .mobile-menu::before { content:''; position:absolute; top:-22%; right:-18%; width:80vw; height:80vw; background:radial-gradient(ellipse at 60% 40%, rgba(244,114,182,.14) 0%, transparent 65%); pointer-events:none; }
+    .mobile-menu::after { content:''; position:absolute; bottom:-12%; left:-12%; width:60vw; height:60vw; background:radial-gradient(ellipse at 40% 60%, rgba(244,114,182,.06) 0%, transparent 65%); pointer-events:none; }
     .mobile-menu.open { opacity:1; pointer-events:all; }
-    .mobile-menu a { font-family:var(--fd); font-size:clamp(2.2rem,8vw,3.2rem); font-weight:300; color:var(--white); text-decoration:none; transition:color .3s; }
-    .mobile-menu a:hover { color:var(--pink); }
-    .mobile-menu-line { width:1px; height:48px; background:linear-gradient(to bottom,transparent,var(--pink-dim),transparent); }
+    .mm-logo-wrap { position:absolute; top:28px; left:48px; }
+    .mm-logo { height:44px; mix-blend-mode:screen; }
+    .mm-nav { display:flex; flex-direction:column; width:100%; position:relative; z-index:1; }
+    .mm-link { display:flex; align-items:baseline; gap:18px; padding:20px 0; border-bottom:1px solid rgba(244,114,182,.08); text-decoration:none; color:var(--white); opacity:0; transform:translateX(-28px); transition:color .3s, opacity .5s ease, transform .5s cubic-bezier(0.22,1,0.36,1); }
+    .mm-link:first-child { border-top:1px solid rgba(244,114,182,.08); }
+    .mm-link:hover { color:var(--pink); }
+    .mm-link:hover .mm-num { opacity:1; }
+    .mobile-menu.open .mm-link { opacity:1; transform:translateX(0); }
+    .mobile-menu.open .mm-link:nth-child(1) { transition-delay:.07s; }
+    .mobile-menu.open .mm-link:nth-child(2) { transition-delay:.14s; }
+    .mobile-menu.open .mm-link:nth-child(3) { transition-delay:.21s; }
+    .mobile-menu.open .mm-link:nth-child(4) { transition-delay:.28s; }
+    .mm-num { font-family:var(--fb); font-size:.56rem; letter-spacing:.28em; color:var(--pink); opacity:.5; flex-shrink:0; transition:opacity .3s; }
+    .mm-text { font-family:var(--fd); font-size:clamp(2.6rem,10vw,3.8rem); font-weight:300; line-height:1; }
+    .mm-cta-wrap { margin-top:44px; position:relative; z-index:1; opacity:0; transform:translateY(10px); transition:opacity .5s ease .38s, transform .5s ease .38s; }
+    .mobile-menu.open .mm-cta-wrap { opacity:1; transform:translateY(0); }
+    .mm-info { position:absolute; bottom:40px; left:48px; right:48px; z-index:1; opacity:0; transition:opacity .5s ease .46s; }
+    .mobile-menu.open .mm-info { opacity:1; }
+    .mm-info-rule { width:28px; height:1px; background:rgba(244,114,182,.35); margin-bottom:14px; }
+    .mm-info p { font-family:var(--fb); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.24); line-height:2.1; }
 
     /* ── HERO ── */
     #hero { height:100vh; min-height:700px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; padding:0 24px; }
-    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:contrast(1.1) saturate(1.18) brightness(1.02); animation:hero-kb 16s ease-out forwards; }
+    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center center; filter:contrast(1.1) saturate(1.18) brightness(1.02); animation:hero-kb 16s ease-out forwards; }
     @keyframes hero-kb { from { transform:scale(1.12); } to { transform:scale(1); } }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(170deg,rgba(26,6,20,.68) 0%,rgba(26,6,20,.42) 50%,rgba(26,6,20,.78) 100%); }
     .hero-eyebrow { font-family:var(--fb); font-size:.68rem; letter-spacing:.38em; text-transform:uppercase; color:var(--pink); margin-bottom:28px; opacity:0; position:relative; z-index:1; }
@@ -261,6 +280,7 @@
       .story-img-col { display:none; }
     }
     @media (max-width:768px) {
+      .hero-video { object-fit:cover; object-position:center 22%; }
       nav { padding:16px 24px; } nav.scrolled { padding:12px 24px; }
       .nav-links { display:none; } .nav-toggle { display:flex; }
       #story, #menu, #experience, #find-us { padding:80px 24px; }
@@ -572,17 +592,25 @@
   </svg>
 </div>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
-  <a href="#story"      onclick="closeMobileMenu()">Story</a>
-  <div class="mobile-menu-line"></div>
-  <a href="#menu"       onclick="closeMobileMenu()">Menu</a>
-  <div class="mobile-menu-line"></div>
-  <a href="#experience" onclick="closeMobileMenu()">Experience</a>
-  <div class="mobile-menu-line"></div>
-  <a href="#find-us"    onclick="closeMobileMenu()">Find Us</a>
-  <div class="mobile-menu-line"></div>
-  <a href="#offer"      onclick="closeMobileMenu()" style="color:var(--pink)">Order Now</a>
+<!-- Mobile Menu (premium) -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mm-logo-wrap">
+    <img src="cafe presko logo .png" alt="Cafe Presko" class="mm-logo">
+  </div>
+  <nav class="mm-nav" aria-label="Mobile navigation">
+    <a href="#story"      class="mm-link" onclick="closeMobileMenu()"><span class="mm-num">01</span><span class="mm-text">Story</span></a>
+    <a href="#menu"       class="mm-link" onclick="closeMobileMenu()"><span class="mm-num">02</span><span class="mm-text">Menu</span></a>
+    <a href="#experience" class="mm-link" onclick="closeMobileMenu()"><span class="mm-num">03</span><span class="mm-text">Experience</span></a>
+    <a href="#find-us"    class="mm-link" onclick="closeMobileMenu()"><span class="mm-num">04</span><span class="mm-text">Find Us</span></a>
+  </nav>
+  <div class="mm-cta-wrap">
+    <a href="#offer" class="btn-pink" onclick="closeMobileMenu()">Order Now</a>
+  </div>
+  <div class="mm-info">
+    <div class="mm-info-rule"></div>
+    <p>342 Gorgie Road · Edinburgh · EH11 2QU</p>
+    <p>0131 261 4948</p>
+  </div>
 </div>
 
 <!-- ═══ NAV ═══ -->
@@ -599,6 +627,34 @@
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
+    <svg class="nav-toggle-cherry" viewBox="0 0 54 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <radialGradient id="ntcg" cx="34%" cy="24%" r="74%" gradientUnits="objectBoundingBox">
+          <stop offset="0%"   stop-color="#FF5577"/>
+          <stop offset="55%"  stop-color="#C4002E"/>
+          <stop offset="100%" stop-color="#680016"/>
+        </radialGradient>
+        <linearGradient id="ntlf" x1="8%" y1="0%" x2="92%" y2="100%">
+          <stop offset="0%"   stop-color="#B0E860"/>
+          <stop offset="100%" stop-color="#28700E"/>
+        </linearGradient>
+        <linearGradient id="ntstm" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#246010"/>
+          <stop offset="50%"  stop-color="#58AA28"/>
+          <stop offset="100%" stop-color="#246010"/>
+        </linearGradient>
+        <filter id="ntds" x="-45%" y="-25%" width="190%" height="160%">
+          <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#580012" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+      <path d="M 26 4 C 30 -1, 50 0, 48 15 C 43 24, 24 17, 26 4 Z" fill="url(#ntlf)"/>
+      <path d="M 26 4 C 29 12, 25 22, 21 30" stroke="url(#ntstm)" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+      <circle cx="21" cy="49" r="18" fill="#620016" filter="url(#ntds)"/>
+      <circle cx="21" cy="49" r="18" fill="url(#ntcg)"/>
+      <ellipse cx="15" cy="42.5" rx="9" ry="6" fill="rgba(255,255,255,.26)" transform="rotate(-26 15 42.5)"/>
+      <ellipse cx="14.5" cy="42" rx="5.5" ry="3.8" fill="rgba(255,255,255,.82)" transform="rotate(-22 14.5 42)"/>
+      <circle cx="11.5" cy="39" r="1" fill="white"/>
+    </svg>
   </button>
 </nav>
 
